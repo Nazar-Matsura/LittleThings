@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Source\\repos\\NThingsTelegramBot\\NThingsTelegramBot\\NThingsTelegramBot.csproj": {}
+    "C:\\Users\\User\\Documents\\GitHub\\LittleThings\\NThingsTelegramBot\\NThingsTelegramBot\\NThingsTelegramBot.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Source\\repos\\NThingsTelegramBot\\NThingsTelegramBot\\NThingsTelegramBot.csproj": {
+    "C:\\Users\\User\\Documents\\GitHub\\LittleThings\\NThingsTelegramBot\\NThingsTelegramBot\\NThingsTelegramBot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Source\\repos\\NThingsTelegramBot\\NThingsTelegramBot\\NThingsTelegramBot.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\LittleThings\\NThingsTelegramBot\\NThingsTelegramBot\\NThingsTelegramBot.csproj",
         "projectName": "NThingsTelegramBot",
-        "projectPath": "C:\\Users\\User\\Source\\repos\\NThingsTelegramBot\\NThingsTelegramBot\\NThingsTelegramBot.csproj",
+        "projectPath": "C:\\Users\\User\\Documents\\GitHub\\LittleThings\\NThingsTelegramBot\\NThingsTelegramBot\\NThingsTelegramBot.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Source\\repos\\NThingsTelegramBot\\NThingsTelegramBot\\obj\\",
+        "outputPath": "C:\\Users\\User\\Documents\\GitHub\\LittleThings\\NThingsTelegramBot\\NThingsTelegramBot\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
