@@ -19,11 +19,14 @@ namespace NThingsTelegramBot
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
             services.AddSingleton<IBotClient, BotClient>();
             services.AddTransient<ITempService, TempService>();
 
             services.Configure<BotConfiguration>(Configuration.GetSection("TelegramBot"));
+
+            services
+                .AddControllers()
+                .AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,6 +39,8 @@ namespace NThingsTelegramBot
 
             app.UseRouting();
             app.UseCors();
+
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

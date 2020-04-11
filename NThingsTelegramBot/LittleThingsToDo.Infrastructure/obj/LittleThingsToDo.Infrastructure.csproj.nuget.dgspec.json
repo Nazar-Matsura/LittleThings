@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Documents\\GitHub\\LittleThings\\NThingsTelegramBot\\NThingsTelegramBot\\NThingsTelegramBot.csproj": {}
+    "C:\\Users\\User\\Documents\\GitHub\\LittleThings\\NThingsTelegramBot\\LittleThingsToDo.Infrastructure\\LittleThingsToDo.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Documents\\GitHub\\LittleThings\\NThingsTelegramBot\\NThingsTelegramBot\\NThingsTelegramBot.csproj": {
+    "C:\\Users\\User\\Documents\\GitHub\\LittleThings\\NThingsTelegramBot\\LittleThingsToDo.Infrastructure\\LittleThingsToDo.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\LittleThings\\NThingsTelegramBot\\NThingsTelegramBot\\NThingsTelegramBot.csproj",
-        "projectName": "NThingsTelegramBot",
-        "projectPath": "C:\\Users\\User\\Documents\\GitHub\\LittleThings\\NThingsTelegramBot\\NThingsTelegramBot\\NThingsTelegramBot.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\LittleThings\\NThingsTelegramBot\\LittleThingsToDo.Infrastructure\\LittleThingsToDo.Infrastructure.csproj",
+        "projectName": "LittleThingsToDo.Infrastructure",
+        "projectPath": "C:\\Users\\User\\Documents\\GitHub\\LittleThings\\NThingsTelegramBot\\LittleThingsToDo.Infrastructure\\LittleThingsToDo.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Documents\\GitHub\\LittleThings\\NThingsTelegramBot\\NThingsTelegramBot\\obj\\",
+        "outputPath": "C:\\Users\\User\\Documents\\GitHub\\LittleThings\\NThingsTelegramBot\\LittleThingsToDo.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -21,14 +21,14 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netstandard2.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netstandard2.0": {
             "projectReferences": {}
           }
         },
@@ -39,11 +39,13 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netstandard2.0": {
           "dependencies": {
-            "Telegram.Bot": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[15.5.1, )"
+              "version": "[2.0.3, )",
+              "autoReferenced": true
             }
           },
           "imports": [
@@ -56,14 +58,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
