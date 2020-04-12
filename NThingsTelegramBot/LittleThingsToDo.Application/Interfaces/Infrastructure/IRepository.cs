@@ -1,30 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using LittleThingsToDo.Domain.Interfaces;
 
 namespace LittleThingsToDo.Application.Interfaces.Infrastructure
 {
-    public interface IRepository<TEntity> where TEntity : IIdentifiedEntity
+    public interface IRepository<TEntity> 
+        where TEntity : class, IIdentifiedEntity
     {
-        TEntity GetSingle(Guid id);
+        Task<TEntity> GetSingle(Guid id);
 
-        TEntity GetAll(Expression<Func<TEntity, bool>> expression);
+        Task<IEnumerable<TEntity>> GetAll(Expression<Func<TEntity, bool>> expression);
 
-        TEntity GetAllByIds(List<Guid> ids);
+        Task<IEnumerable<TEntity>> GetAllByIds(List<Guid> ids);
 
-        void Add(TEntity entity);
+        Task Add(TEntity entity);
 
-        void AddRange(IEnumerable<TEntity> entities);
+        Task AddRange(IEnumerable<TEntity> entities);
 
-        void Remove(TEntity entity);
+        Task Remove(TEntity entity);
 
-        void RemoveById(Guid id);
+        Task RemoveById(Guid id);
 
-        void RemoveRange(IEnumerable<TEntity> entities);
+        Task RemoveRange(IEnumerable<TEntity> entities);
 
-        void RemoveRangeOfIds(List<Guid> ids);
+        Task RemoveRangeOfIds(List<Guid> ids);
 
-        void Update(TEntity entity);
+        Task Update(TEntity entity);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using Telegram.Bot;
 
-namespace NThingsTelegramBot.Services
+namespace LittleThingsToDo.TelegramBot.Services
 {
     public class BotClient : IBotClient
     {

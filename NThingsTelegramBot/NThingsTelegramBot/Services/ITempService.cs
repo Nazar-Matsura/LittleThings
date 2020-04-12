@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Telegram.Bot.Types;
 
-namespace NThingsTelegramBot.Services
+namespace LittleThingsToDo.TelegramBot.Services
 {
     public interface ITempService
     {

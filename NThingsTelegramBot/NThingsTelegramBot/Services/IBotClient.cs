@@ -1,6 +1,6 @@
 ﻿using Telegram.Bot;
 
-namespace NThingsTelegramBot.Services
+namespace LittleThingsToDo.TelegramBot.Services
 {
     public interface IBotClient
     {

@@ -1,11 +1,9 @@
 using System;
-using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
-namespace NThingsTelegramBot
+namespace LittleThingsToDo.TelegramBot
 {
     public class ErrorHandlingMiddleware
     {

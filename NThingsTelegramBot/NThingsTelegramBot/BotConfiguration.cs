@@ -1,4 +1,4 @@
-﻿namespace NThingsTelegramBot
+﻿namespace LittleThingsToDo.TelegramBot
 {
     public class BotConfiguration
     {

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace NThingsTelegramBot
+namespace LittleThingsToDo.TelegramBot
 {
     public class Program
     {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Telegram.Bot.Types;
 
-namespace NThingsTelegramBot.Services
+namespace LittleThingsToDo.TelegramBot.Services
 {
     public class TempService : ITempService
     {
@@ -14,7 +14,7 @@ namespace NThingsTelegramBot.Services
 
         public async Task SayHello(Message message)
         {
-            await _botClient.Client.SendTextMessageAsync(message.Chat.Id, "Sup bro");
+            await _botClient.Client.SendChatActionAsync(message.Chat.Id, )
         }
     }
 }

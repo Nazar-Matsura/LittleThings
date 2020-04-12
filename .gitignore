@@ -1,3 +1,9 @@
 NThingsTelegramBot/.vs/
 NThingsTelegramBot/NThingsTelegramBot/obj/
 NThingsTelegramBot/NThingsTelegramBot/bin/
+NThingsTelegramBot/LittleThingsToDo/obj/
+NThingsTelegramBot/LittleThingsToDo.Application/obj/
+NThingsTelegramBot/LittleThingsToDo.Infrastructure/obj/
+NThingsTelegramBot/LittleThingsToDo/bin/
+NThingsTelegramBot/LittleThingsToDo.Infrastructure/bin/
+NThingsTelegramBot/LittleThingsToDo.Application/bin/

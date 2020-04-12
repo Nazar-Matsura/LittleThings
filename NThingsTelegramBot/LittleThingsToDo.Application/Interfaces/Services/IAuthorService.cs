@@ -1,11 +1,10 @@
-﻿using LittleThingsToDo.Domain.Entities;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace LittleThingsToDo.Application.Interfaces.Services
 {
     public interface IAuthorService
     {
-        void Add();
-        bool Exists();
-        Author Current();
+        Task Add(Guid id);
     }
 }
