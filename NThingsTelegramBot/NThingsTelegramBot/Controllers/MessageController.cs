@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
 using LittleThingsToDo.Application.Interfaces.Services;
+using LittleThingsToDo.TelegramBot.Commands;
+using LittleThingsToDo.TelegramBot.Commands.Interfaces;
 using LittleThingsToDo.TelegramBot.Services;
 using Microsoft.AspNetCore.Mvc;
 using Telegram.Bot.Types;
@@ -10,14 +12,14 @@ namespace LittleThingsToDo.TelegramBot.Controllers
     [Route("api/update")]
     public class MessageController : Controller
     {
-        private readonly ITempService _tempService;
+        private readonly ICommand _command;
         private readonly ICurrentAuthorService _currentAuthorService;
 
 
-        public MessageController(ITempService tempService,
+        public MessageController(ICommand command,
             ICurrentAuthorService currentAuthorService)
         {
-            _tempService = tempService;
+            _command = command;
             _currentAuthorService = currentAuthorService;
         }
 
@@ -28,7 +30,7 @@ namespace LittleThingsToDo.TelegramBot.Controllers
             var test = _currentAuthorService.CurrentAuthorId;
             if (update.Type == UpdateType.Message)
             {
-                await _tempService.SayHello(update.Message);
+                await _command.SayHello(update.Message);
             }
 
             return Ok();

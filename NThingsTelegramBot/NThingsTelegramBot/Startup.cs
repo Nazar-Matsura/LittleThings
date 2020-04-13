@@ -1,6 +1,9 @@
 using LittleThingsToDo.Application;
 using LittleThingsToDo.Application.Interfaces.Services;
 using LittleThingsToDo.Infrastructure;
+using LittleThingsToDo.TelegramBot.Commands;
+using LittleThingsToDo.TelegramBot.Commands.Classes;
+using LittleThingsToDo.TelegramBot.Commands.Interfaces;
 using LittleThingsToDo.TelegramBot.Filters;
 using LittleThingsToDo.TelegramBot.Services;
 using Microsoft.AspNetCore.Builder;
@@ -27,7 +30,7 @@ namespace LittleThingsToDo.TelegramBot
 
             services.AddSingleton<IBotClient, BotClient>();
             services.AddScoped<ICurrentAuthorService, CurrentAuthorService>();
-            services.AddTransient<ITempService, TempService>();
+            services.AddTransient<ICommand, Command>();
 
             services.Configure<BotConfiguration>(Configuration.GetSection("TelegramBot"));
             

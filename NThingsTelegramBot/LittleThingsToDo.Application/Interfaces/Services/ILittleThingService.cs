@@ -10,5 +10,6 @@ namespace LittleThingsToDo.Application.Interfaces.Services
         void Remove(Guid id);
         void AddEntry();
         List<Entry> GetEntriesForToday();
+        List<LittleThing> GetLittleThings();
     }
 }
