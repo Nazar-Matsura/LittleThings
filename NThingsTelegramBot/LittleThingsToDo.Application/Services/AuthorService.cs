@@ -19,5 +19,10 @@ namespace LittleThingsToDo.Application.Services
         {
             await _repository.Add(new Author(id));
         }
+
+        public async Task<bool> Exists(Guid id)
+        {
+            return await _repository.Any(a => a.Id == id);
+        }
     }
 }

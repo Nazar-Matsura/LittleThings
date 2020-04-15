@@ -13,11 +13,14 @@ namespace LittleThingsToDo.TelegramBot.Commands.Classes
     public class MenuCommand : Command, IMenuCommand
     {
         private readonly ILittleThingService _littleThingService;
+        private readonly ICommandConstantsService _commandConstantsService;
 
         public MenuCommand(IBotClient botClient,
-            ILittleThingService littleThingService) : base(botClient)
+            ILittleThingService littleThingService, 
+            ICommandConstantsService commandConstantsService) : base(botClient)
         {
             _littleThingService = littleThingService;
+            _commandConstantsService = commandConstantsService;
         }
 
         public override async Task Handle(Update update)
@@ -25,7 +28,7 @@ namespace LittleThingsToDo.TelegramBot.Commands.Classes
             var buttons = BuildMenuButtons();
             var markup = new InlineKeyboardMarkup(buttons);
             
-            await _botClient.Client.SendTextMessageAsync(update.Message.Chat.Id, "Main Menu", replyMarkup:buttons);
+            await _botClient.Client.SendTextMessageAsync(update.Message.Chat.Id, "Little Things", replyMarkup:markup);
         }
 
         private IEnumerable<IEnumerable<InlineKeyboardButton>> BuildMenuButtons()
@@ -40,7 +43,7 @@ namespace LittleThingsToDo.TelegramBot.Commands.Classes
                 result.Add(new InlineKeyboardButton {CallbackData = littleThing.Id.ToString()});
             }
 
-            result.Add(new InlineKeyboardButton {Text = "[Remove]", CallbackData = Guid.Empty.ToString()});
+            result.Add(new InlineKeyboardButton {Text = "[Add New]", CallbackData = _commandConstantsService.AddNewIdentifier});
 
             return new List<IEnumerable<InlineKeyboardButton>> {result};
         }

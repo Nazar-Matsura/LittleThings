@@ -30,7 +30,9 @@ namespace LittleThingsToDo.TelegramBot
 
             services.AddSingleton<IBotClient, BotClient>();
             services.AddScoped<ICurrentAuthorService, CurrentAuthorService>();
-            services.AddTransient<ICommand, Command>();
+            services.AddScoped<ICommandConstantsService, CommandConstantsService>();
+            services.AddTransient<IMenuCommand, MenuCommand>();
+            services.AddTransient<IAddLittleThingMenuCommand, AddLittleThingMenuCommand>();
 
             services.Configure<BotConfiguration>(Configuration.GetSection("TelegramBot"));
             

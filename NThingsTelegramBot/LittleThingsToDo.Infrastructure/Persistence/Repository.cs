@@ -82,5 +82,10 @@ namespace LittleThingsToDo.Infrastructure.Persistence
             _entities.Update(entity);
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task<bool> Any(Expression<Func<TEntity, bool>> expression)
+        {
+            return await _entities.AnyAsync(expression);
+        }
     }
 }

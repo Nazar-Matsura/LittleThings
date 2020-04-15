@@ -12,7 +12,5 @@ namespace LittleThingsToDo.TelegramBot.Commands.Classes
         protected Command(IBotClient botClient) => _botClient = botClient;
 
         public abstract Task Handle(Update update);
-
-        protected override 
     }
 }

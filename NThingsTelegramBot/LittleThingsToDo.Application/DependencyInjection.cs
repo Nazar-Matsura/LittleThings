@@ -9,6 +9,7 @@ namespace LittleThingsToDo.Application
         public static void AddApplication(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IAuthorService, AuthorService>();
+            serviceCollection.AddScoped<ILittleThingService, LittleThingService>();
         }
     }
 }

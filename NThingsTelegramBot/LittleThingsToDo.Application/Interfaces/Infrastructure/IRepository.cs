@@ -28,5 +28,7 @@ namespace LittleThingsToDo.Application.Interfaces.Infrastructure
         Task RemoveRangeOfIds(List<Guid> ids);
 
         Task Update(TEntity entity);
+
+        Task<bool> Any(Expression<Func<TEntity, bool>> expression);
     }
 }
