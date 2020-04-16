@@ -27,7 +27,7 @@ namespace LittleThingsToDo.Application.Services
             var currentAuthorId = _currentAuthor.CurrentAuthorId;
             await VerifyAuthorExists(currentAuthorId);
 
-            var littleThings = _littleThingsRepository.GetAll(BaseEntity.CreatedBySpec(currentAuthorId));
+            var littleThings = _littleThingsRepository.GetAll(BaseEntity.CreatedBySpec<LittleThing>(currentAuthorId));
 
         }
 

@@ -5,11 +5,17 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleThingsToDo.TelegramBot", "NThingsTelegramBot\LittleThingsToDo.TelegramBot.csproj", "{9558C064-012A-4878-83A9-72BFE3D66208}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleThingsToDo.Domain", "LittleThingsToDo\LittleThingsToDo.Domain.csproj", "{4ADD6F9A-28D9-4A5B-A396-72E7CC3EA21A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleThingsToDo.Domain", "LittleThingsToDo\LittleThingsToDo.Domain.csproj", "{4ADD6F9A-28D9-4A5B-A396-72E7CC3EA21A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleThingsToDo.Application", "LittleThingsToDo.Application\LittleThingsToDo.Application.csproj", "{925CD04E-6DDB-4CBA-9249-F50313399AD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleThingsToDo.Application", "LittleThingsToDo.Application\LittleThingsToDo.Application.csproj", "{925CD04E-6DDB-4CBA-9249-F50313399AD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleThingsToDo.Infrastructure", "LittleThingsToDo.Infrastructure\LittleThingsToDo.Infrastructure.csproj", "{E74B8C9F-542E-4940-8C8E-DB979733F83B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleThingsToDo.Infrastructure", "LittleThingsToDo.Infrastructure\LittleThingsToDo.Infrastructure.csproj", "{E74B8C9F-542E-4940-8C8E-DB979733F83B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{92A784C6-6E06-4CE8-8B0D-663D383209E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6E046C93-183F-4BAA-8A9D-B186D1D5E063}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleThingsToDo.Domain.Tests", "LittleThingsToDo.Domain.Tests\LittleThingsToDo.Domain.Tests.csproj", "{7E6151F4-5090-45EA-8D25-92ECCE063765}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +39,20 @@ Global
 		{E74B8C9F-542E-4940-8C8E-DB979733F83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E74B8C9F-542E-4940-8C8E-DB979733F83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E74B8C9F-542E-4940-8C8E-DB979733F83B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E6151F4-5090-45EA-8D25-92ECCE063765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E6151F4-5090-45EA-8D25-92ECCE063765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E6151F4-5090-45EA-8D25-92ECCE063765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E6151F4-5090-45EA-8D25-92ECCE063765}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9558C064-012A-4878-83A9-72BFE3D66208} = {92A784C6-6E06-4CE8-8B0D-663D383209E1}
+		{4ADD6F9A-28D9-4A5B-A396-72E7CC3EA21A} = {92A784C6-6E06-4CE8-8B0D-663D383209E1}
+		{925CD04E-6DDB-4CBA-9249-F50313399AD3} = {92A784C6-6E06-4CE8-8B0D-663D383209E1}
+		{E74B8C9F-542E-4940-8C8E-DB979733F83B} = {92A784C6-6E06-4CE8-8B0D-663D383209E1}
+		{7E6151F4-5090-45EA-8D25-92ECCE063765} = {6E046C93-183F-4BAA-8A9D-B186D1D5E063}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CE178976-437C-4BD8-B4E0-A59C1C7F24AA}

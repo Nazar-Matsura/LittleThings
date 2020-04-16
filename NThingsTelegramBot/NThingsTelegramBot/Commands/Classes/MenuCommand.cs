@@ -25,15 +25,15 @@ namespace LittleThingsToDo.TelegramBot.Commands.Classes
 
         public override async Task Handle(Update update)
         {
-            var buttons = BuildMenuButtons();
+            var buttons = await BuildMenuButtons();
             var markup = new InlineKeyboardMarkup(buttons);
             
             await _botClient.Client.SendTextMessageAsync(update.Message.Chat.Id, "Little Things", replyMarkup:markup);
         }
 
-        private IEnumerable<IEnumerable<InlineKeyboardButton>> BuildMenuButtons()
+        private async Task<IEnumerable<IEnumerable<InlineKeyboardButton>>> BuildMenuButtons()
         {
-            var littleThings = _littleThingService
+            var littleThings = await _littleThingService
                 .GetLittleThings();
 
             var result = new List<InlineKeyboardButton>();

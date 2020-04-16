@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq.Expressions;
+using LittleThingsToDo.Domain.Common;
 using LittleThingsToDo.Domain.Interfaces;
 
 namespace LittleThingsToDo.Domain.Entities
@@ -21,9 +21,10 @@ namespace LittleThingsToDo.Domain.Entities
 
         public DateTime? ModifiedOn { get; set; }
 
-        public static Func<BaseEntity, bool> CreatedBySpec(Guid userId)
+        public static Spec<TEntity> CreatedBySpec<TEntity>(Guid userId)
+            where TEntity : BaseEntity
         {
-            return entity => entity.CreatedBy == userId;
+            return new Spec<TEntity>(entity => entity.CreatedBy == userId);
         }
     }
 }
