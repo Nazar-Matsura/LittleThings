@@ -5,4 +5,9 @@ using System.Threading.Tasks;
 
 namespace LittleThingsToDo.TelegramBot.Common
 {
+    public enum CallbackCommand
+    {
+        AddLittleThing,
+        AddEntry,
+    }
 }

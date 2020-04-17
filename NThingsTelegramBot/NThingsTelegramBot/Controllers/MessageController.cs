@@ -17,7 +17,8 @@ namespace LittleThingsToDo.TelegramBot.Controllers
         
         public MessageController(IMenuCommand command,
             ICurrentAuthorService currentAuthorService,
-            IAddLittleThingMenuCommand addCommand)
+            IAddLittleThingMenuCommand addCommand,
+            IAuthorService authorService)
         {
             _command = command;
             _currentAuthorService = currentAuthorService;
@@ -28,9 +29,7 @@ namespace LittleThingsToDo.TelegramBot.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Update update)
         {
-            var test = _currentAuthorService.CurrentAuthorId;
-            await _addCommand.Handle(update);
-
+            await _command.Handle(update);
             return Ok();
         }
     }

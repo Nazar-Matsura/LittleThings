@@ -10,6 +10,7 @@ namespace LittleThingsToDo.TelegramBot.Commands.Classes
     public class AddLittleThingsCommand : Command, IAddLittleThingsCommand
     {
         private readonly ILittleThingService _littleThingService;
+        
         public AddLittleThingsCommand(IBotClient botClient, 
             ILittleThingService littleThingService) : base(botClient)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using LittleThingsToDo.Application.Interfaces.Infrastructure;
 using LittleThingsToDo.Application.Interfaces.Services;
@@ -11,32 +12,26 @@ namespace LittleThingsToDo.Application.Services
     {
         private readonly IRepository<LittleThing> _littleThingsRepository;
         private readonly ICurrentAuthorService _currentAuthor;
-        private readonly IAuthorService _authorService;
-
+        
         public LittleThingService(IRepository<LittleThing> littleThingsRepository,
-            ICurrentAuthorService currentAuthor,
-            IAuthorService authorService)
+            ICurrentAuthorService currentAuthor)
         {
             _littleThingsRepository = littleThingsRepository;
             _currentAuthor = currentAuthor;
-            _authorService = authorService;
         }
 
         public async Task AddList(List<string> names)
         {
             var currentAuthorId = _currentAuthor.CurrentAuthorId;
-            await VerifyAuthorExists(currentAuthorId);
+            
+            var littleThings = await _littleThingsRepository.GetAll(BaseEntity.CreatedBySpec<LittleThing>(currentAuthorId));
+            var existingLittleThingNames = littleThings.Select(lt => lt.Name);
 
-            var littleThings = _littleThingsRepository.GetAll(BaseEntity.CreatedBySpec<LittleThing>(currentAuthorId));
+            var littleThingsToAdd = names
+                .Except(existingLittleThingNames)
+                .Select(name => new LittleThing(name));
 
-        }
-
-        private async Task VerifyAuthorExists(Guid currentAuthorId)
-        {
-            if (!await _authorService.Exists(currentAuthorId))
-            {
-                await _authorService.Add(currentAuthorId);
-            }
+            await _littleThingsRepository.AddRange(littleThingsToAdd);
         }
 
         public async Task Remove(Guid id)
@@ -56,7 +51,9 @@ namespace LittleThingsToDo.Application.Services
 
         public async Task<List<LittleThing>> GetLittleThings()
         {
-            throw new NotImplementedException();
+            var currentAuthorId = _currentAuthor.CurrentAuthorId;
+            var littleThings = await _littleThingsRepository.GetAll(BaseEntity.CreatedBySpec<LittleThing>(currentAuthorId));
+            return littleThings.ToList();
         }
     }
 }

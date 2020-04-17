@@ -28,14 +28,6 @@ namespace LittleThingsToDo.TelegramBot
         {
             services.AddHttpContextAccessor();
 
-            services.AddSingleton<IBotClient, BotClient>();
-            services.AddScoped<ICurrentAuthorService, CurrentAuthorService>();
-            services.AddScoped<ICommandConstantsService, CommandConstantsService>();
-            services.AddTransient<IMenuCommand, MenuCommand>();
-            services.AddTransient<IAddLittleThingMenuCommand, AddLittleThingMenuCommand>();
-
-            services.Configure<BotConfiguration>(Configuration.GetSection("TelegramBot"));
-            
             services
                 .AddControllers(options => 
                     options.Filters.Add(typeof(CurrentAuthorSetterFilter)))
@@ -44,6 +36,8 @@ namespace LittleThingsToDo.TelegramBot
             services.AddApplication();
 
             services.AddInfrastructure(Configuration);
+
+            services.AddTelegramBot(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

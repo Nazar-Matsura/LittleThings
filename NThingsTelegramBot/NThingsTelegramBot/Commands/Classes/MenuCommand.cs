@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LittleThingsToDo.Application.Interfaces.Services;
 using LittleThingsToDo.TelegramBot.Commands.Interfaces;
+using LittleThingsToDo.TelegramBot.Common;
 using LittleThingsToDo.TelegramBot.Services;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
@@ -13,14 +14,17 @@ namespace LittleThingsToDo.TelegramBot.Commands.Classes
     public class MenuCommand : Command, IMenuCommand
     {
         private readonly ILittleThingService _littleThingService;
-        private readonly ICommandConstantsService _commandConstantsService;
+        private readonly ICallbackDataFormatter _callbackDataFormatter;
+        private readonly ICurrentChatService _currentChatService;
 
         public MenuCommand(IBotClient botClient,
             ILittleThingService littleThingService, 
-            ICommandConstantsService commandConstantsService) : base(botClient)
+            ICallbackDataFormatter callbackDataFormatter,
+            ICurrentChatService currentChatService) : base(botClient)
         {
             _littleThingService = littleThingService;
-            _commandConstantsService = commandConstantsService;
+            _callbackDataFormatter = callbackDataFormatter;
+            _currentChatService = currentChatService;
         }
 
         public override async Task Handle(Update update)
@@ -28,7 +32,7 @@ namespace LittleThingsToDo.TelegramBot.Commands.Classes
             var buttons = await BuildMenuButtons();
             var markup = new InlineKeyboardMarkup(buttons);
             
-            await _botClient.Client.SendTextMessageAsync(update.Message.Chat.Id, "Little Things", replyMarkup:markup);
+            await _botClient.Client.SendTextMessageAsync(_currentChatService.CurrentChatId, "Little Things", replyMarkup:markup);
         }
 
         private async Task<IEnumerable<IEnumerable<InlineKeyboardButton>>> BuildMenuButtons()
@@ -37,13 +41,16 @@ namespace LittleThingsToDo.TelegramBot.Commands.Classes
                 .GetLittleThings();
 
             var result = new List<InlineKeyboardButton>();
-
+            
+            var callbackData = new CallbackData<Guid>(CallbackCommand.AddEntry, Guid.Empty);
             foreach (var littleThing in littleThings)
             {
-                result.Add(new InlineKeyboardButton {CallbackData = littleThing.Id.ToString()});
+                callbackData.Data = littleThing.Id; // Optimization? We limit number of allocations to one, but sacrifice encapsulation.
+                result.Add(new InlineKeyboardButton {Text = littleThing.Name, CallbackData = callbackData.ToJson()});
             }
 
-            result.Add(new InlineKeyboardButton {Text = "[Add New]", CallbackData = _commandConstantsService.AddNewIdentifier});
+            callbackData.Command = 
+            result.Add(new InlineKeyboardButton {Text = "[Add New]", CallbackData = });
 
             return new List<IEnumerable<InlineKeyboardButton>> {result};
         }

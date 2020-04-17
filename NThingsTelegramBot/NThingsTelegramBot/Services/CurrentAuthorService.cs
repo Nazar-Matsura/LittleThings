@@ -1,12 +1,6 @@
 ﻿using System;
-using System.IO;
 using LittleThingsToDo.Application.Exceptions;
-using LittleThingsToDo.Application.Interfaces.Infrastructure;
 using LittleThingsToDo.Application.Interfaces.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Telegram.Bot.Types;
 
 namespace LittleThingsToDo.TelegramBot.Services
 {
