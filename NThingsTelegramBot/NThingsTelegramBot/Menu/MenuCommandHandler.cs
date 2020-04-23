@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using LittleThingsToDo.Application.Interfaces.Services;
-using LittleThingsToDo.TelegramBot.Commands.Interfaces;
-using LittleThingsToDo.TelegramBot.Common;
+using LittleThingsToDo.TelegramBot.LittleThing.AddLittleThingEntry;
+using LittleThingsToDo.TelegramBot.LittleThing.AddLittleThingMenu;
 using LittleThingsToDo.TelegramBot.Services;
-using Telegram.Bot.Types;
+using MediatR;
 using Telegram.Bot.Types.ReplyMarkups;
 
-namespace LittleThingsToDo.TelegramBot.Commands.Classes
+namespace LittleThingsToDo.TelegramBot.Menu
 {
-    public class MenuCommand : Command, IMenuCommand
+    public class MenuCommandHandler : CommandHandlerBase, IRequestHandler<MenuCommand>
     {
         private readonly ILittleThingService _littleThingService;
         private readonly ICallbackDataFormatter _callbackDataFormatter;
         private readonly ICurrentChatService _currentChatService;
 
-        public MenuCommand(IBotClient botClient,
+        public MenuCommandHandler(IBotClient botClient,
             ILittleThingService littleThingService, 
             ICallbackDataFormatter callbackDataFormatter,
             ICurrentChatService currentChatService) : base(botClient)
@@ -27,12 +26,15 @@ namespace LittleThingsToDo.TelegramBot.Commands.Classes
             _currentChatService = currentChatService;
         }
 
-        public override async Task Handle(Update update)
+        public async Task<Unit> Handle(MenuCommand request, CancellationToken cancellationToken)
         {
             var buttons = await BuildMenuButtons();
             var markup = new InlineKeyboardMarkup(buttons);
-            
-            await _botClient.Client.SendTextMessageAsync(_currentChatService.CurrentChatId, "Little Things", replyMarkup:markup);
+
+            await _botClient.Client.SendTextMessageAsync(_currentChatService.CurrentChatId, "Little Things",
+                replyMarkup: markup, cancellationToken: cancellationToken);
+
+            return default;
         }
 
         private async Task<IEnumerable<IEnumerable<InlineKeyboardButton>>> BuildMenuButtons()
@@ -42,15 +44,14 @@ namespace LittleThingsToDo.TelegramBot.Commands.Classes
 
             var result = new List<InlineKeyboardButton>();
             
-            var callbackData = new CallbackData<Guid>(CallbackCommand.AddEntry, Guid.Empty);
             foreach (var littleThing in littleThings)
             {
-                callbackData.Data = littleThing.Id; // Optimization? We limit number of allocations to one, but sacrifice encapsulation.
-                result.Add(new InlineKeyboardButton {Text = littleThing.Name, CallbackData = callbackData.ToJson()});
+                var addEntry = new AddLittleThingEntryCommand(littleThing.Id);
+                result.Add(new InlineKeyboardButton {Text = littleThing.Name, CallbackData = _callbackDataFormatter.ToString(addEntry)});
             }
 
-            callbackData.Command = 
-            result.Add(new InlineKeyboardButton {Text = "[Add New]", CallbackData = });
+            var addLittleThingMenu = new AddLittleThingMenuCommand();
+            result.Add(new InlineKeyboardButton {Text = "[Add New]", CallbackData = _callbackDataFormatter.ToString(addLittleThingMenu)});
 
             return new List<IEnumerable<InlineKeyboardButton>> {result};
         }

@@ -1,35 +1,36 @@
 ﻿using System.Threading.Tasks;
 using LittleThingsToDo.Application.Interfaces.Services;
-using LittleThingsToDo.TelegramBot.Commands;
-using LittleThingsToDo.TelegramBot.Commands.Interfaces;
+using LittleThingsToDo.TelegramBot.Services;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Telegram.Bot.Types;
-using Telegram.Bot.Types.Enums;
 
 namespace LittleThingsToDo.TelegramBot.Controllers
 {
     [Route("api/update")]
     public class MessageController : Controller
     {
-        private readonly IMenuCommand _command;
-        private readonly IAddLittleThingMenuCommand _addCommand;
-        private readonly ICurrentAuthorService _currentAuthorService;
-        
-        public MessageController(IMenuCommand command,
-            ICurrentAuthorService currentAuthorService,
-            IAddLittleThingMenuCommand addCommand,
-            IAuthorService authorService)
+        private readonly ICurrentAuthorService _currentAuthorService; 
+        private readonly ICommandResolver _commandResolver;
+        private readonly IMediator _mediator;
+
+        public MessageController(ICurrentAuthorService currentAuthorService,
+            IAuthorService authorService,
+            ICommandResolver commandResolver,
+            IMediator mediator)
         {
-            _command = command;
             _currentAuthorService = currentAuthorService;
-            _addCommand = addCommand;
+            _commandResolver = commandResolver;
+            _mediator = mediator;
         }
 
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Update update)
         {
-            await _command.Handle(update);
+            var request = _commandResolver.Resolve(update);
+            await _mediator.Send(request);
+
             return Ok();
         }
     }

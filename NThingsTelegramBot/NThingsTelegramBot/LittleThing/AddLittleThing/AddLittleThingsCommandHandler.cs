@@ -1,25 +1,25 @@
 ﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using LittleThingsToDo.Application.Interfaces.Services;
-using LittleThingsToDo.TelegramBot.Commands.Interfaces;
 using LittleThingsToDo.TelegramBot.Services;
-using Telegram.Bot.Types;
+using MediatR;
 
-namespace LittleThingsToDo.TelegramBot.Commands.Classes
+namespace LittleThingsToDo.TelegramBot.LittleThing.AddLittleThing
 {
-    public class AddLittleThingsCommand : Command, IAddLittleThingsCommand
+    public class AddLittleThingsCommandHandler : CommandHandlerBase, IRequestHandler<AddLittleThingCommand>
     {
         private readonly ILittleThingService _littleThingService;
         
-        public AddLittleThingsCommand(IBotClient botClient, 
+        public AddLittleThingsCommandHandler(IBotClient botClient, 
             ILittleThingService littleThingService) : base(botClient)
         {
             _littleThingService = littleThingService;
         }
 
-        public override async Task Handle(Update update)
+        public async Task<Unit> Handle(AddLittleThingCommand request, CancellationToken cancellationToken)
         {
-            var names = update.Message.Text
+            var names = request.LittleThingsList
                 .Split(", ")
                 .ToList();
 
@@ -27,6 +27,8 @@ namespace LittleThingsToDo.TelegramBot.Commands.Classes
             {
                 await _littleThingService.AddList(names);
             }
+
+            return default;
         }
     }
 }
