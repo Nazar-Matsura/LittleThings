@@ -3,7 +3,7 @@ using Telegram.Bot.Types;
 
 namespace LittleThingsToDo.TelegramBot
 {
-    public interface IForceReplyCommand : IRequest<Unit>
+    public interface IForceReplyCommand : IRequest
     {
         Update Update { get; }
     }
