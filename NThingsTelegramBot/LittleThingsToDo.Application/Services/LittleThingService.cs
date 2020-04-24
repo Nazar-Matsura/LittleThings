@@ -11,13 +11,16 @@ namespace LittleThingsToDo.Application.Services
     public class LittleThingService : ILittleThingService
     {
         private readonly IRepository<LittleThing> _littleThingsRepository;
+        private readonly IRepository<Entry> _entriesRepository;
         private readonly ICurrentAuthorService _currentAuthor;
         
         public LittleThingService(IRepository<LittleThing> littleThingsRepository,
-            ICurrentAuthorService currentAuthor)
+            ICurrentAuthorService currentAuthor,
+            IRepository<Entry> entriesRepository)
         {
             _littleThingsRepository = littleThingsRepository;
             _currentAuthor = currentAuthor;
+            _entriesRepository = entriesRepository;
         }
 
         public async Task AddList(List<string> names)
@@ -39,9 +42,11 @@ namespace LittleThingsToDo.Application.Services
             throw new NotImplementedException();
         }
 
-        public async Task AddEntry()
+        public async Task AddEntry(Guid littleThingId)
         {
-            throw new NotImplementedException();
+            var littleThing = await _littleThingsRepository.GetSingle(littleThingId);
+
+            await _entriesRepository.Add(new Entry(littleThing));
         }
 
         public async Task<List<Entry>> GetEntriesForToday()

@@ -7,7 +7,7 @@ using MediatR;
 
 namespace LittleThingsToDo.TelegramBot.LittleThing.AddLittleThing
 {
-    public class AddLittleThingsCommandHandler : CommandHandlerBase, IRequestHandler<AddLittleThingCommand>
+    public class AddLittleThingsCommandHandler : CommandHandlerBase, IRequestHandler<AddLittleThingCommand, Unit>
     {
         private readonly ILittleThingService _littleThingService;
         
@@ -19,7 +19,7 @@ namespace LittleThingsToDo.TelegramBot.LittleThing.AddLittleThing
 
         public async Task<Unit> Handle(AddLittleThingCommand request, CancellationToken cancellationToken)
         {
-            var names = request.LittleThingsList
+            var names = request.Update.Message.Text
                 .Split(", ")
                 .ToList();
 

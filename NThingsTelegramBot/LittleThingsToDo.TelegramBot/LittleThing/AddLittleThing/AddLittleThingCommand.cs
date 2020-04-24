@@ -1,9 +1,18 @@
-﻿using MediatR;
+﻿using Telegram.Bot.Types;
 
 namespace LittleThingsToDo.TelegramBot.LittleThing.AddLittleThing
 {
-    public class AddLittleThingCommand : IRequest
+    public class AddLittleThingCommand : IForceReplyCommand
     {
-        public string LittleThingsList { get; set; }
+        public AddLittleThingCommand()
+        {
+        }
+
+        public AddLittleThingCommand(Update update)
+        {
+            Update = update;
+        }
+
+        public Update Update { get; set; }
     }
 }

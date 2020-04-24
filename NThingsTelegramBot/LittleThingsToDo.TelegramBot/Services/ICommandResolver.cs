@@ -1,10 +1,11 @@
-﻿using MediatR;
+﻿using System.Threading.Tasks;
+using MediatR;
 using Telegram.Bot.Types;
 
 namespace LittleThingsToDo.TelegramBot.Services
 {
     public interface ICommandResolver
     {
-        IRequest Resolve(Update update);
+        Task<IRequest> Resolve(Update update);
     }
 }

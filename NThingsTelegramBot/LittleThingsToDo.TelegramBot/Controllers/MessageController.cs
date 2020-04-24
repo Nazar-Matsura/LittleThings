@@ -28,7 +28,7 @@ namespace LittleThingsToDo.TelegramBot.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Update update)
         {
-            var request = _commandResolver.Resolve(update);
+            var request = await _commandResolver.Resolve(update);
             await _mediator.Send(request);
 
             return Ok();

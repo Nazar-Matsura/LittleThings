@@ -9,7 +9,7 @@ namespace LittleThingsToDo.Application.Interfaces.Services
     {
         Task AddList(List<string> names);
         Task Remove(Guid id);
-        Task AddEntry();
+        Task AddEntry(Guid id);
         Task<List<Entry>> GetEntriesForToday();
         Task<List<LittleThing>> GetLittleThings();
     }

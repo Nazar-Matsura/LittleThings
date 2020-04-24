@@ -1,6 +1,7 @@
 using LittleThingsToDo.Application;
 using LittleThingsToDo.Infrastructure;
 using LittleThingsToDo.TelegramBot.Filters;
+using LittleThingsToDo.TelegramBot.Storage;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -33,6 +34,8 @@ namespace LittleThingsToDo.TelegramBot
             services.AddInfrastructure(Configuration);
 
             services.AddTelegramBot(Configuration);
+
+            services.AddTelegramBotStorage(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

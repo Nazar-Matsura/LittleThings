@@ -14,8 +14,11 @@ namespace LittleThingsToDo.TelegramBot
             services.Configure<BotConfiguration>(configuration.GetSection("TelegramBot"));
 
             services.AddSingleton<IBotClient, BotClient>();
+            services.AddSingleton<ICallbackDataFormatter, CallbackDataFormatter>();
+
             services.AddScoped<ICurrentAuthorService, CurrentAuthorService>();
             services.AddScoped<ICurrentChatService, CurrentChatService>();
+            services.AddScoped<ICommandResolver, CommandResolver>();
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
         }
