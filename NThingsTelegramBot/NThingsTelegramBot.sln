@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleThingsToDo.TelegramBot", "NThingsTelegramBot\LittleThingsToDo.TelegramBot.csproj", "{9558C064-012A-4878-83A9-72BFE3D66208}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleThingsToDo.TelegramBot", "LittleThingsToDo.TelegramBot\LittleThingsToDo.TelegramBot.csproj", "{9558C064-012A-4878-83A9-72BFE3D66208}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleThingsToDo.Domain", "LittleThingsToDo\LittleThingsToDo.Domain.csproj", "{4ADD6F9A-28D9-4A5B-A396-72E7CC3EA21A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleThingsToDo.Domain", "LittleThingsToDo.Domain\LittleThingsToDo.Domain.csproj", "{4ADD6F9A-28D9-4A5B-A396-72E7CC3EA21A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleThingsToDo.Application", "LittleThingsToDo.Application\LittleThingsToDo.Application.csproj", "{925CD04E-6DDB-4CBA-9249-F50313399AD3}"
 EndProject
