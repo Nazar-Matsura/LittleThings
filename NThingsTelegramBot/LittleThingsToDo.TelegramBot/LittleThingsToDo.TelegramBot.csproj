@@ -24,7 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LittleThingsToDo.Application\LittleThingsToDo.Application.csproj" />
     <ProjectReference Include="..\LittleThingsToDo.Infrastructure\LittleThingsToDo.Infrastructure.csproj" />
-    <ProjectReference Include="..\TelegramBot.Storage\LittleThingsToDo.TelegramBot.Storage.csproj" />
+    <ProjectReference Include="..\LittleThingsToDo.TelegramBot.Storage\LittleThingsToDo.TelegramBot.Storage.csproj" />
   </ItemGroup>
 
 
