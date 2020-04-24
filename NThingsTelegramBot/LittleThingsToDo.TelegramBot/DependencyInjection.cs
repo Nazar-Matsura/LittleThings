@@ -1,9 +1,7 @@
-﻿using LittleThingsToDo.Application.Interfaces.Services;
-using LittleThingsToDo.TelegramBot.Commands.Classes;
-using LittleThingsToDo.TelegramBot.Commands.Interfaces;
-using LittleThingsToDo.TelegramBot.LittleThing.AddLittleThing;
-using LittleThingsToDo.TelegramBot.LittleThing.AddLittleThingMenu;
+﻿using System.Reflection;
+using LittleThingsToDo.Application.Interfaces.Services;
 using LittleThingsToDo.TelegramBot.Services;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,10 +16,8 @@ namespace LittleThingsToDo.TelegramBot
             services.AddSingleton<IBotClient, BotClient>();
             services.AddScoped<ICurrentAuthorService, CurrentAuthorService>();
             services.AddScoped<ICurrentChatService, CurrentChatService>();
-            services.AddScoped<ICallbackDataFormatter, CallbackDataFormatter>();
-            services.AddTransient<IMenuCommand, MenuCommand>();
-            services.AddTransient<IAddLittleThingMenuCommand, AddLittleThingMenuCommand>();
-            services.AddTransient<IAddLittleThingsCommand, AddLittleThingsCommandHandler>();
+
+            services.AddMediatR(Assembly.GetExecutingAssembly());
         }
     }
 }

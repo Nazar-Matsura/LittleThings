@@ -1,8 +1,0 @@
-C:\Users\User\Documents\GitHub\LittleThings\NThingsTelegramBot\LittleThingsToDo\bin\Debug\netstandard2.0\LittleThingsToDo.Domain.deps.json
-C:\Users\User\Documents\GitHub\LittleThings\NThingsTelegramBot\LittleThingsToDo\bin\Debug\netstandard2.0\LittleThingsToDo.Domain.dll
-C:\Users\User\Documents\GitHub\LittleThings\NThingsTelegramBot\LittleThingsToDo\bin\Debug\netstandard2.0\LittleThingsToDo.Domain.pdb
-C:\Users\User\Documents\GitHub\LittleThings\NThingsTelegramBot\LittleThingsToDo\obj\Debug\netstandard2.0\LittleThingsToDo.Domain.AssemblyInfoInputs.cache
-C:\Users\User\Documents\GitHub\LittleThings\NThingsTelegramBot\LittleThingsToDo\obj\Debug\netstandard2.0\LittleThingsToDo.Domain.AssemblyInfo.cs
-C:\Users\User\Documents\GitHub\LittleThings\NThingsTelegramBot\LittleThingsToDo\obj\Debug\netstandard2.0\LittleThingsToDo.Domain.dll
-C:\Users\User\Documents\GitHub\LittleThings\NThingsTelegramBot\LittleThingsToDo\obj\Debug\netstandard2.0\LittleThingsToDo.Domain.pdb
-C:\Users\User\Documents\GitHub\LittleThings\NThingsTelegramBot\LittleThingsToDo\obj\Debug\netstandard2.0\LittleThingsToDo.Domain.csprojAssemblyReference.cache

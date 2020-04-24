@@ -10,7 +10,7 @@ namespace LittleThingsToDo.TelegramBot
         private readonly RequestDelegate _next;
 
         public ErrorHandlingMiddleware(RequestDelegate next,
-            IHostingEnvironment hostingEnvironment)
+            IWebHostEnvironment hostingEnvironment)
         {
             _next = next;
         }

@@ -49,8 +49,6 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 artifacts/
-/DueDiligerWebAPI/bower_components/*
-/DueDiligerWebAPI/appsettings.Local.json
 *.csproj.user
 *_i.c
 *_p.c
