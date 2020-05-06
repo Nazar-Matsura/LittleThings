@@ -39,7 +39,11 @@ namespace LittleThingsToDo.Application.Services
 
         public async Task Remove(Guid id)
         {
-            throw new NotImplementedException();
+            var entry = await _littleThingsRepository.GetSingle(id);
+            if (entry != null)
+            {
+                await _littleThingsRepository.Remove(entry);
+            }
         }
 
         public async Task AddEntry(Guid littleThingId)
@@ -51,7 +55,11 @@ namespace LittleThingsToDo.Application.Services
 
         public async Task<List<Entry>> GetEntriesForToday()
         {
-            throw new NotImplementedException();
+            var currentAuthorId = _currentAuthor.CurrentAuthorId;
+            var entries = await _entriesRepository.GetAll(BaseEntity.CreatedBySpec<Entry>(currentAuthorId) &
+                                                Entry.CreatedTodaySpec);
+
+            return entries.ToList();
         }
 
         public async Task<List<LittleThing>> GetLittleThings()

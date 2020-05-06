@@ -11,7 +11,9 @@ namespace LittleThingsToDo.TelegramBot.LittleThing.AddLittleThingEntry
         protected readonly ILittleThingService _littleThingService;
 
         public AddLittleThingEntryCommandHandler(IBotClient botClient,
-            ILittleThingService littleThingService) : base(botClient)
+            ICurrentChatService currentChatService,
+            ILittleThingService littleThingService)
+            : base(botClient, currentChatService)
         {
             _littleThingService = littleThingService;
         }

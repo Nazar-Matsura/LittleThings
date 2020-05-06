@@ -74,7 +74,7 @@ namespace LittleThingsToDo.Infrastructure.Persistence
                 .HasMany(lt => lt.Entries)
                 .WithOne(entry => entry.LittleThing)
                 .OnDelete(DeleteBehavior.Restrict);
-
+            
             base.OnModelCreating(modelBuilder);
         }
     }

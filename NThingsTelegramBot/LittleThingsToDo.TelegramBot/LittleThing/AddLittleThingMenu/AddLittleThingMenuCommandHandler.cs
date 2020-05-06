@@ -10,15 +10,13 @@ namespace LittleThingsToDo.TelegramBot.LittleThing.AddLittleThingMenu
 {
     public class AddLittleThingMenuCommandHandler : CommandHandlerBase, IRequestHandler<AddLittleThingMenuCommand>
     {
-        protected readonly ICurrentChatService _currentChatService;
         protected readonly ICommandStorage _commandStorage;
 
         public AddLittleThingMenuCommandHandler(IBotClient botClient,
             ICurrentChatService currentChatService,
-            ICommandStorage commandStorage) 
-            : base(botClient)
+            ICommandStorage commandStorage)
+            : base(botClient, currentChatService)
         {
-            _currentChatService = currentChatService;
             _commandStorage = commandStorage;
         }
 

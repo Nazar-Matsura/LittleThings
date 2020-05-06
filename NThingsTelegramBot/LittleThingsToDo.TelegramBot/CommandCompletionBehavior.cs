@@ -26,7 +26,7 @@ namespace LittleThingsToDo.TelegramBot
             if(request is IForceReplyCommand command)
                 await _commandStorage.CompleteAsync(command, _currentChatService.CurrentChatId);
 
-            return default;
+            return default;  
         }
     }
 }

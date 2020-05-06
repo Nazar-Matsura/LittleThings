@@ -1,22 +1,27 @@
 ﻿using System;
+using LittleThingsToDo.Domain.Common;
 
 namespace LittleThingsToDo.Domain.Entities
 {
     public class Entry : BaseEntity
     {
-        private Entry(Guid littleThingId)
+        protected Entry()
         {
-            LittleThingId = littleThingId;
         }
 
         public Entry(LittleThing littleThing)
-            :this(littleThing.Id)
         {
             LittleThing = littleThing;
+            LittleThingId = littleThing.Id;
         }
 
         public Guid LittleThingId { get; private set; }
 
-        public LittleThing LittleThing { get; private set; }
+        public virtual LittleThing LittleThing { get; private set; }
+
+        public static Spec<Entry> CreatedTodaySpec
+        {
+            get{return new Spec<Entry>(e => e.CreatedOn.Date == DateTime.Today);}
+        }
     }
 }

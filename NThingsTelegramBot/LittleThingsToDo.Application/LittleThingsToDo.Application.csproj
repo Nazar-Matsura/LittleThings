@@ -14,4 +14,8 @@
     <ProjectReference Include="..\LittleThingsToDo.Domain\LittleThingsToDo.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dto\LittleThing\" />
+  </ItemGroup>
+
 </Project>

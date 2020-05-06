@@ -20,6 +20,6 @@ namespace LittleThingsToDo.Domain.Entities
 
         public string Name { get; private set; }
 
-        public ICollection<Entry> Entries { get; private set; }
+        public virtual ICollection<Entry> Entries { get; private set; }
     }
 }
